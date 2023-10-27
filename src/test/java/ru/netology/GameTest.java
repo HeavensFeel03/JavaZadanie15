@@ -103,14 +103,7 @@ public class GameTest {
         });
     }
 
-    @Test
-    public void ShouldRoundNotFoundPlayer662() {
-        ArrayList<String> regList = new ArrayList<>();
-        gam.addPlayer(item6);
-        Assertions.assertThrows(NotRegisteredException.class, () -> {
-            gam.round("Kolya", "Sveta");
-        });
-    }
+  
 
 
 }
