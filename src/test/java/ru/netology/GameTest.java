@@ -6,9 +6,15 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+
 public class GameTest {
 
     Game gam = new Game();
+
+
+    ArrayList<String> regList = new ArrayList<>();
+
+
     Player item1 = new Player(3, "Kolya", 7);
     Player item2 = new Player(4, "Petya", 8);
     Player item3 = new Player(6, "Vlad", 9);
@@ -19,11 +25,17 @@ public class GameTest {
 
     @BeforeEach
     public void setup() {
-        gam.add(item1);
-        gam.add(item2);
-        gam.add(item3);
-        gam.add(item4);
-        gam.add(item5);
+        gam.addPlayer(item1);
+        gam.addPlayer(item2);
+        gam.addPlayer(item3);
+        gam.addPlayer(item4);
+        gam.addPlayer(item5);
+
+        gam.regList.add("Kolya");
+        gam.regList.add("Petya");
+        gam.regList.add("Vlad");
+        gam.regList.add("Arkadii");
+        gam.regList.add("Slava");
     }
 
 
@@ -61,7 +73,7 @@ public class GameTest {
 
     @Test
     public void noShouldRoundPlayers2() {
-        gam.add(item7);
+        gam.addPlayer(item7);
         Assertions.assertThrows(NotRegisteredException.class, () -> {
             gam.round("Kolya", "Evgenii");
         });
@@ -69,7 +81,7 @@ public class GameTest {
 
     @Test
     public void noShouldRoundPlayers1() {
-        gam.add(item6);
+        gam.addPlayer(item6);
         Assertions.assertThrows(NotRegisteredException.class, () -> {
             gam.round("Sasha", "Kolya");
         });
@@ -77,7 +89,7 @@ public class GameTest {
 
     @Test
     public void ShouldRoundNotFoundPlayers1() {
-        gam.add(item6);
+        gam.addPlayer(item6);
         Assertions.assertThrows(NotRegisteredException.class, () -> {
             gam.round("Sveta", "Kolya");
         });
@@ -85,9 +97,20 @@ public class GameTest {
 
     @Test
     public void ShouldRoundNotFoundPlayers2() {
-        gam.add(item6);
+        gam.addPlayer(item6);
         Assertions.assertThrows(NotRegisteredException.class, () -> {
             gam.round("Kolya", "Sveta");
         });
     }
+
+    @Test
+    public void ShouldRoundNotFoundPlayer662() {
+        ArrayList<String> regList = new ArrayList<>();
+        gam.addPlayer(item6);
+        Assertions.assertThrows(NotRegisteredException.class, () -> {
+            gam.round("Kolya", "Sveta");
+        });
+    }
+
+
 }

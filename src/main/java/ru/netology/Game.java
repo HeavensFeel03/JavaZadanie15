@@ -5,9 +5,10 @@ import java.util.ArrayList;
 public class Game {
 
     private Player[] players = new Player[0];
+    ArrayList<String> regList = new ArrayList<>();
 
 
-    public void add(Player player) {
+    public void addPlayer(Player player) {
 
         Player[] temp = new Player[players.length + 1];
         for (int i = 0; i < players.length; i++) {
@@ -16,14 +17,6 @@ public class Game {
         temp[temp.length - 1] = player;
         players = temp;
     }
-    /*private Player[] addToPlayers(Player[] current, Player player) {
-        Player[] tmp = new Player[current.length + 1];
-        for (int i = 0; i < current.length; i++) {
-            tmp[i] = current[i];
-        }
-        tmp[tmp.length - 1] = player;
-        return tmp;
-    }*/
 
     public int round(String playerName1, String playerName2) {
         if (findByName(playerName1) == null) {
@@ -58,12 +51,7 @@ public class Game {
     }
 
     public int register(String player) {
-        ArrayList<String> regList = new ArrayList<>();
-        regList.add("Kolya");
-        regList.add("Petya");
-        regList.add("Vlad");
-        regList.add("Arkadii");
-        regList.add("Slava");
+
         for (int i = 0; i < regList.size(); i++) {
             if (regList.get(i).equals(player)) {
                 return 1;
@@ -84,5 +72,6 @@ public class Game {
     public Player[] findAll() {
         return players;
     }
+
 
 }
