@@ -1,11 +1,12 @@
 package ru.netology;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
 
     private Player[] players = new Player[0];
-    ArrayList<String> regList = new ArrayList<>();
+    List<String> regList = new ArrayList<>();
 
 
     public void addPlayer(Player player) {
@@ -31,11 +32,9 @@ public class Game {
         }
 
 
-        if (register(playerName1) == 0) {
-            throw new NotRegisteredException(
-                    "Player with name: " + playerName1 + " not registration");
-        }
-        if (register(playerName2) == 0) {
+        if ((regList.contains(playerName1) != true)) throw new NotRegisteredException(
+                "Player with name: " + playerName1 + " not registration");
+        if (regList.contains(playerName2) != true) {
             throw new NotRegisteredException(
                     "Player with name: " + playerName2 + " not registration");
         }
@@ -48,16 +47,6 @@ public class Game {
         } else
             return 0;
 
-    }
-
-    public int register(String player) {
-
-        for (int i = 0; i < regList.size(); i++) {
-            if (regList.get(i).equals(player)) {
-                return 1;
-            }
-        }
-        return 0;
     }
 
     public Player findByName(String query) {

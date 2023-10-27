@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class GameTest {
@@ -12,7 +13,7 @@ public class GameTest {
     Game gam = new Game();
 
 
-    ArrayList<String> regList = new ArrayList<>();
+    //  List<String> regList = new ArrayList<>();
 
 
     Player item1 = new Player(3, "Kolya", 7);
@@ -102,8 +103,6 @@ public class GameTest {
             gam.round("Kolya", "Sveta");
         });
     }
-
-  
 
 
 }
